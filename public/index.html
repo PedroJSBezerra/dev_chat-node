@@ -11,48 +11,10 @@
 <body>
     <form id="chat">
         <input type="text" name="username" placeholder="Digite seu usuario"><br>
-        <div class="messages"></div><br>
-        <input type="text" name="message" placeholder="Digite sua mensagen"><br>
+        <div class="chatLog"></div><br>
+        <input type="text" name="usermessage" placeholder="Digite sua mensagen"><br>
         <button type="submit">Enviar</button>
     </form>
-
-    <script type="text/javascript">
-
-        // for ngrok use 'https://51f183e1b900.ngrok.io'
-        // or 'http://localhost:3000'
-        var socket = io()
-
-        function renderMessage(message) {
-            $('.messages').append(`<div class="message"><strong>${message.author}: </strong> ${message.message}</div>`)
-        }
-
-        socket.on('previousMessages', (messages) => {
-            for(message of messages) {
-                renderMessage(message)
-            }
-        })
-
-        socket.on('receivedMessage', (message) => {
-            renderMessage(message)
-        })
-
-        $('#chat').submit(function(event){
-            event.preventDefault()
-
-            var author = $('input[name=username]').val()
-            var message = $('input[name=message]').val()
-
-            if(author.length && message.length){
-                var messageObject = {
-                    author: author,
-                    message: message
-                }
-
-                renderMessage(messageObject)
-
-                socket.emit('sendMessage', messageObject)
-            }
-        })
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

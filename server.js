@@ -14,17 +14,20 @@ app
         res.render('index.html')
     })
 
-let messages = []
+    
+let msgLog = []
+
 
 io.on('connection', socket => {
-    console.log(`Socket conectado: ${socket.id}`)
+    console.log(`Socket id: ${socket.id}`)
 
-    socket.emit('previousMessages', messages)
-
-    socket.on('sendMessage', data => {
-        messages.push(data)
-        socket.broadcast.emit('receivedMessage', data)
+    socket.on('clientSendMsg', (msg) =>{
+        msgLog.push(msg)
+        console.log(msgLog)
+        
+        socket.broadcast.emit('serverSendMsg', msg)
     })
+    
 })
 
 server.listen(3000)
