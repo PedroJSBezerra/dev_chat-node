@@ -1,20 +1,35 @@
 var socket = io()
-let chat = document.querySelector('#chat')
+let messagearea = document.querySelector('.messagearea')
 let chatLog = document.querySelector('.chatLog')
 
 function showMessage(msg) {
     // console.log(msg)
-    chatLog.insertAdjacentHTML("beforeend", `<li><strong>${msg.username}: </strong>${msg.usermessage}</li>`)
+    chatLog.insertAdjacentHTML("beforeend", `<li><strong>${msg.username}:<br> </strong>${msg.usermessage}</li>`)
+
+    function scrollDown(){
+        chatLog.scrollTop = chatLog.scrollHeight-chatLog.offsetHeight
+    }
+    scrollDown()
+}
+
+socket.on('messageLog', (messages) => {
+    for(msg of messages){
+        showMessage(msg)
+    }
+})
+
+function showLog(messageLog) {
+    messageLog.forEch('msg', showMessage(msg))
 }
 
 socket.on('serverSendMsg', (msg) => {
     showMessage(msg)
 })
 
-chat.addEventListener('submit', (event) => {
+messagearea.addEventListener('submit', (event) => {
     event.preventDefault()
 
-    let username = document.querySelector('input[name=username]').value
+    let username = "Pedro"//document.querySelector('input[name=username]').value
     let usermessage = document.querySelector('input[name=usermessage]').value
 
     let msgObject = {
@@ -24,4 +39,5 @@ chat.addEventListener('submit', (event) => {
 
     showMessage(msgObject)
     socket.emit('clientSendMsg', msgObject)
+    messagearea.reset()
 })
