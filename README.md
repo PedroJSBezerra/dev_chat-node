@@ -1,4 +1,4 @@
-## simples pagina de chat ultilizando:
+## Página de chat em NodeJS
 
 node
 express
