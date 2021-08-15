@@ -5,6 +5,7 @@ module.exports = {
             console.log(`Socket id: ${socket.id}`)
             socket.emit('messageLog', msgLog)
             socket.on('clientSendMsg', (msg) =>{
+                console.log(msg)
                 msgLog.push(msg)
                 socket.broadcast.emit('serverSendMsg', msg)
             })

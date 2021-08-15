@@ -2,7 +2,7 @@
 import io from 'socket.io-client'
 import './App.css'
 
-const socket = io('http://localhost:3001')
+const socket = io('https://3001-coffee-constrictor-a5psyq0t.ws-us14.gitpod.io')
 socket.on('connection', () => {
   console.log('Socket.io connected!')
 })
@@ -17,6 +17,9 @@ function App() {
       username: 'Pedro',
       usermessage: message
     }
+
+
+    socket.emit('clientSendMsg', msgObject)
 
     console.log(msgObject)
     //clear input field
