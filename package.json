@@ -12,6 +12,6 @@
   },
   "scripts":{
     "serve": "npx ngrok http 3000",
-    "start": "nodemon server/index.js -e html,css"
+    "start": "nodemon server/index.js -e html,css,js"
   }
 }

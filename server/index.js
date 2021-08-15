@@ -3,7 +3,9 @@ const express = require('express'),
     server = require('http').createServer(app),
     io = require('socket.io')(server),
     path = require('path'),
-    socket = require('./socket.js')
+    socket = require('./socket.js'),
+    host = 'localhost',
+    port = 3000
 
 app
     .use(express.static(path.join(__dirname, '../public')))
@@ -16,4 +18,4 @@ app
     })
 
 socket.start(io)
-server.listen(3000)
+server.listen(port, console.log(`Node Server listen http://${host}:${port}`))
