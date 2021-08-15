@@ -5,7 +5,7 @@ const express = require('express'),
     path = require('path'),
     socket = require('./socket.js'),
     host = 'localhost',
-    port = 3000
+    port = 3001
 
 app
     .use(express.static(path.join(__dirname, '../public')))

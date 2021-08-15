@@ -1,4 +1,4 @@
-var socket = io()
+var socket = io('http://localhost:3001')
 let messagearea = document.querySelector('.messagearea')
 let chatLog = document.querySelector('.chatLog')
 
