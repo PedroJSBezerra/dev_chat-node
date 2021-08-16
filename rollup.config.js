@@ -72,6 +72,6 @@ export default {
 	],
 	watch: {
 		clearScreen: false,
-		include: "public/*"
+		include: "public/global.css"
 	}
 };
