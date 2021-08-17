@@ -1,6 +1,22 @@
+<script>
+    import socket from "./socket.js"
+    
+    let messages = []
+
+    socket.on('messageLog', (servermessages) => {
+
+    })
+
+    socket.on('serverSendMsg', (msg) => {
+
+    })
+</script>
 <main>
     <div class="chatLog">
         <li><strong>Sala 01 diz: </strong>Seja bem vindo(a) ao bate papo!</li>
+        {#each messages as msg}
+            <li><strong>${msg.username}:<br> </strong>${msg.usermessage}</li>
+        {/each}
     </div>
 </main>
 <style>
