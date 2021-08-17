@@ -10,7 +10,7 @@ const express = require('express'),
     //path = require('path'),
     socket = require('./socket.js'),
     host = 'localhost',
-    port = 3001
+    port = 3000
 
 // app  //config for static server pages
 //     .use(express.static(path.join(__dirname, '../public')))

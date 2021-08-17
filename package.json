@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "nodemon": "nodemon ./server/app.js",
+    "nodemon": "nodemon --watch server ./server/app.js",
     "server": "node ./server/app.js",
     "build": "rollup -c",
     "dev": "rollup -c -w",
